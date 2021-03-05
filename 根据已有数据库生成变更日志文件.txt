@@ -1,0 +1,19 @@
+一、数据库配置在liquibase.properties文件中
+
+二、在liquibase文件夹下运行cmd
+依次执行：（最终生成文件在data下，所以注意删除data文件夹下同名文件，否则会报错，也有可能后面生成的记录会追加；2、3选一个执行即可）
+1.读取配置文件：
+liquibase update 
+
+2.不需要对比差异直接数据库生成changeLog：
+liquibase --changeLogFile="./data/db.changelog.xml" generateChangeLog
+
+3.需要对比两个数据库的差异生成changeLog：
+liquibase --changeLogFile="./data/db.changelog.xml" diffChangeLog --referenceUrl="jdbc:mysql://localhost:3306/mg_uaa_wh" --referenceUsername=root --referencePassword=123
+
+
+打印日志： --logLevel=debug --logFile="./data/log.txt"
+generateChangeLog默认只会创建数据库结构的变更日志文件，如果希望创建插入数据的变更日志文件，
+参考：http://www.itkeyword.com/doc/5486900660447047x707
+
+*如果已经通过changeLog生成表结构了,生成过的changSet一个字符都不要再改了，否则对应changeSet的hash码就变化了
