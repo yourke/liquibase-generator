@@ -9,7 +9,7 @@ liquibase update
 liquibase --changeLogFile="./data/db.changelog.xml" generateChangeLog
 
 3.需要对比两个数据库的差异生成changeLog：
-liquibase --changeLogFile="./data/db.changelog.xml" diffChangeLog --referenceUrl="jdbc:mysql://localhost:3306/mg_uaa_wh" --referenceUsername=root --referencePassword=123
+liquibase --changeLogFile="./data/db.changelog.xml" diffChangeLog --referenceUrl="jdbc:mysql://localhost:3306/source" --referenceUsername=root --referencePassword=123
 
 
 打印日志： --logLevel=debug --logFile="./data/log.txt"
